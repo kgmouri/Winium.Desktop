@@ -9,6 +9,7 @@
 
     using OpenQA.Selenium;
     using OpenQA.Selenium.Remote;
+    using OpenQA.Selenium.Winium;
 
     #endregion
 
@@ -26,9 +27,9 @@
         [SetUp]
         public void SetUp()
         {
-            var dc = new DesiredCapabilities();
-            dc.SetCapability("app", Path.Combine(Environment.CurrentDirectory, "WpfTestApplication.exe"));
-            dc.SetCapability("launchDelay", 2);
+            var dc = new DesktopOptions();
+            dc.ApplicationPath = Path.Combine(Environment.CurrentDirectory, "WpfTestApplication.exe");
+            dc.LaunchDelay = 2;
             this.Driver = Activator.CreateInstance(typeof(TDriver), new Uri("http://localhost:9999"), dc) as TDriver;
         }
 

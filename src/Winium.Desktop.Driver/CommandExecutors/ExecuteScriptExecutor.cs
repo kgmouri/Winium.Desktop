@@ -73,7 +73,7 @@
         private void ExecuteAutomationScript(string command)
         {
             var args = (JArray)this.ExecutedCommand.Parameters["args"];
-            var elementId = args[0]["ELEMENT"].ToString();
+            var elementId = args[0]["element-6066-11e4-a52e-4f735466cecf"].ToString();
 
             var element = this.Automator.ElementsRegistry.GetRegisteredElement(elementId);
 
@@ -91,7 +91,7 @@
         private void ExecuteInputScript(string command)
         {
             var args = (JArray)this.ExecutedCommand.Parameters["args"];
-            var elementId = args[0]["ELEMENT"].ToString();
+            var elementId = args[0]["element-6066-11e4-a52e-4f735466cecf"].ToString();
 
             var element = this.Automator.ElementsRegistry.GetRegisteredElement(elementId);
 

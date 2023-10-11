@@ -5,6 +5,7 @@
     using NUnit.Framework;
 
     using OpenQA.Selenium;
+    using OpenQA.Selenium.Winium;
 
     #endregion
 
@@ -12,7 +13,7 @@
     {
         #region Public Properties
 
-        public IWebElement MainWindow { get; set; }
+        public WiniumElement MainWindow { get; set; }
 
         #endregion
 
@@ -21,7 +22,7 @@
         [SetUp]
         public void FindMainWindow()
         {
-            this.MainWindow = this.Driver.FindElement(By.XPath("/*[@AutomationId='Form1']"));
+            this.MainWindow = this.Driver.FindElement(WiniumBy.XPath("/*[@AutomationId='Form1']"));
         }
 
         #endregion

@@ -5,6 +5,7 @@
     using NUnit.Framework;
 
     using OpenQA.Selenium;
+    using OpenQA.Selenium.Winium;
 
     #endregion
 
@@ -15,7 +16,7 @@
         [Test]
         public void IsSelectedCheckBox()
         {
-            var checkbox = this.MainWindow.FindElement(By.Id("CheckBox1"));
+            var checkbox = this.MainWindow.FindElement(WiniumBy.AutomationId("CheckBox1"));
 
             Assert.IsTrue(checkbox.Selected);
         }
@@ -23,8 +24,8 @@
         [Test]
         public void IsSelectedListItem()
         {
-            var list = this.MainWindow.FindElement(By.Id("TextListBox"));
-            var listItem = list.FindElement(By.Name("May"));
+            var list = this.MainWindow.FindElement(WiniumBy.AutomationId("TextListBox"));
+            var listItem = list.FindElement(WiniumBy.Name("May"));
 
             listItem.Click();
 
@@ -34,7 +35,7 @@
         [Test]
         public void IsSelectedTab()
         {
-            var tab = this.MainWindow.FindElement(By.Name("TabItem1"));
+            var tab = this.MainWindow.FindElement(WiniumBy.Name("TabItem1"));
 
             Assert.IsTrue(tab.Selected);
         }
@@ -42,7 +43,7 @@
         [Test]
         public void IsUnselectedCheckBox()
         {
-            var checkbox = this.MainWindow.FindElement(By.Id("CheckBox1"));
+            var checkbox = this.MainWindow.FindElement(WiniumBy.AutomationId("CheckBox1"));
 
             checkbox.Click();
 
@@ -52,8 +53,8 @@
         [Test]
         public void IsUnselectedListItem()
         {
-            var list = this.MainWindow.FindElement(By.Id("TextListBox"));
-            var listItem = list.FindElement(By.Name("May"));
+            var list = this.MainWindow.FindElement(WiniumBy.AutomationId("TextListBox"));
+            var listItem = list.FindElement(WiniumBy.Name("May"));
 
             Assert.IsFalse(listItem.Selected);
         }
@@ -61,7 +62,7 @@
         [Test]
         public void IsUnselectedTab()
         {
-            var tab = this.MainWindow.FindElement(By.Name("TabItem2"));
+            var tab = this.MainWindow.FindElement(WiniumBy.Name("TabItem2"));
 
             Assert.IsFalse(tab.Selected);
         }

@@ -112,7 +112,7 @@
             this.commandDictionary.Add(DriverCommand.Refresh, new CommandInfo("POST", "/session/{sessionId}/refresh"));
             this.commandDictionary.Add(
                 DriverCommand.ExecuteScript,
-                new CommandInfo("POST", "/session/{sessionId}/execute"));
+                new CommandInfo("POST", "/session/{sessionId}/execute/sync"));
             this.commandDictionary.Add(
                 DriverCommand.ExecuteAsyncScript,
                 new CommandInfo("POST", "/session/{sessionId}/execute_async"));
@@ -150,7 +150,7 @@
                 new CommandInfo("POST", "/session/{sessionId}/elements"));
             this.commandDictionary.Add(
                 DriverCommand.GetActiveElement,
-                new CommandInfo("POST", "/session/{sessionId}/element/active"));
+                new CommandInfo("GET", "/session/{sessionId}/element/active"));
             this.commandDictionary.Add(
                 DriverCommand.FindChildElement,
                 new CommandInfo("POST", "/session/{sessionId}/element/{id}/element"));
@@ -195,7 +195,7 @@
                 new CommandInfo("GET", "/session/{sessionId}/element/{id}/location_in_view"));
             this.commandDictionary.Add(
                 DriverCommand.GetElementSize,
-                new CommandInfo("GET", "/session/{sessionId}/element/{id}/size"));
+                new CommandInfo("GET", "/session/{sessionId}/element/{id}/rect"));
             this.commandDictionary.Add(
                 DriverCommand.GetElementValueOfCssProperty,
                 new CommandInfo("GET", "/session/{sessionId}/element/{id}/css/{propertyName}"));
@@ -252,6 +252,9 @@
             this.commandDictionary.Add(
                 DriverCommand.MouseDoubleClick,
                 new CommandInfo("POST", "/session/{sessionId}/doubleclick"));
+            this.commandDictionary.Add(
+                DriverCommand.MouseContextClick,
+                new CommandInfo("POST", "/session/{sessionId}/contextclick"));
             this.commandDictionary.Add(
                 DriverCommand.MouseDown,
                 new CommandInfo("POST", "/session/{sessionId}/buttondown"));

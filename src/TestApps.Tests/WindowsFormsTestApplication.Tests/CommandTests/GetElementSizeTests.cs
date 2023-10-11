@@ -5,6 +5,7 @@
     using NUnit.Framework;
 
     using OpenQA.Selenium;
+    using OpenQA.Selenium.Winium;
 
     #endregion
 
@@ -16,8 +17,8 @@
         [TestCase("TextListBox", 200, 95)]
         public void GetSizeOfElement(string elementId, int width, int height)
         {
-            var mainWindowStrategy = By.XPath("/*[@AutomationId='Form1']");
-            var element = this.Driver.FindElement(mainWindowStrategy).FindElement(By.Id(elementId));
+            var mainWindowStrategy = WiniumBy.XPath("/*[@AutomationId='Form1']");
+            var element = this.Driver.FindElement(mainWindowStrategy).FindElement(WiniumBy.AutomationId(elementId));
 
             var size = element.Size;
 

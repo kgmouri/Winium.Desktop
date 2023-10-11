@@ -5,6 +5,7 @@
     using NUnit.Framework;
 
     using OpenQA.Selenium;
+    using OpenQA.Selenium.Winium;
 
     #endregion
 
@@ -16,7 +17,7 @@
         [Test]
         public void ClearTextBox()
         {
-            var textBox = this.MainWindow.FindElement(By.Id("TextBox1"));
+            var textBox = this.MainWindow.FindElement(WiniumBy.AutomationId("TextBox1"));
             textBox.Clear();
 
             Assert.AreEqual(string.Empty, textBox.Text);

@@ -5,6 +5,7 @@
     using NUnit.Framework;
 
     using OpenQA.Selenium;
+    using OpenQA.Selenium.Winium;
 
     #endregion
 
@@ -21,7 +22,7 @@
         [SetUp]
         public void FindBaseElement()
         {
-            this.textBox = this.MainWindow.FindElement(By.Id("TextBox1"));
+            this.textBox = this.MainWindow.FindElement(WiniumBy.AutomationId("TextBox1"));
         }
 
         [Test]

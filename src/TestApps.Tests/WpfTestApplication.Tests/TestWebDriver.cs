@@ -7,10 +7,11 @@
 
     using OpenQA.Selenium;
     using OpenQA.Selenium.Remote;
+    using OpenQA.Selenium.Winium;
 
     #endregion
 
-    public class TestWebDriver : RemoteWebDriver
+    public class TestWebDriver : WiniumDriver
     {
         #region Constants
 
@@ -40,17 +41,7 @@
 
         #region Constructors and Destructors
 
-        public TestWebDriver(ICommandExecutor commandExecutor, ICapabilities desiredCapabilities)
-            : base(commandExecutor, desiredCapabilities)
-        {
-        }
-
-        public TestWebDriver(ICapabilities desiredCapabilities)
-            : base(desiredCapabilities)
-        {
-        }
-
-        public TestWebDriver(Uri remoteAddress, ICapabilities desiredCapabilities)
+        public TestWebDriver(Uri remoteAddress, DriverOptions desiredCapabilities)
             : base(remoteAddress, desiredCapabilities)
         {
             /*CommandInfoRepository.Instance.TryAddCommand(
@@ -98,7 +89,7 @@
                 new CommandInfo("POST", "/session/{sessionId}/element/{id}/menu/select/{path}"));*/
         }
 
-        public TestWebDriver(Uri remoteAddress, ICapabilities desiredCapabilities, TimeSpan commandTimeout)
+        public TestWebDriver(Uri remoteAddress, DriverOptions desiredCapabilities, TimeSpan commandTimeout)
             : base(remoteAddress, desiredCapabilities, commandTimeout)
         {
         }
@@ -121,7 +112,7 @@
             this.Execute(ExpandComboBoxCommand, new Dictionary<string, object> { { "id", elementId } });
         }
 
-        public RemoteWebElement FindComboBoxSelctedItem(IWebElement element)
+        public WiniumElement FindComboBoxSelctedItem(IWebElement element)
         {
             var elementId = TestHelper.GetElementId(element);
 
@@ -132,7 +123,7 @@
             return this.CreateElementFromResponse(response);
         }
 
-        public RemoteWebElement FindDataGridCell(IWebElement element, int row, int column)
+        public WiniumElement FindDataGridCell(IWebElement element, int row, int column)
         {
             var elementId = TestHelper.GetElementId(element);
 
@@ -143,7 +134,7 @@
             return this.CreateElementFromResponse(response);
         }
 
-        public RemoteWebElement FindMenuItem(IWebElement element, string path)
+        public WiniumElement FindMenuItem(IWebElement element, string path)
         {
             var response = this.Execute(
                 FindMenuItemCommand,
@@ -214,7 +205,7 @@
 
         #region Methods
 
-        private RemoteWebElement CreateElementFromResponse(Response response)
+        private WiniumElement CreateElementFromResponse(Response response)
         {
             var elementDictionary = response.Value as Dictionary<string, object>;
             if (elementDictionary == null)
@@ -222,7 +213,7 @@
                 return null;
             }
 
-            return this.CreateElement((string)elementDictionary["ELEMENT"]);
+            return ((WiniumElementFactory)ElementFactory).CreateElement(elementDictionary);
         }
 
         #endregion

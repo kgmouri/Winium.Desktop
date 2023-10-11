@@ -5,6 +5,7 @@
     using NUnit.Framework;
 
     using OpenQA.Selenium;
+    using OpenQA.Selenium.Winium;
 
     #endregion
 
@@ -16,9 +17,9 @@
         [Test]
         public void ClickButtonWhichSetsText()
         {
-            this.MainWindow.FindElement(By.Id("SetTextButton")).Click();
+            this.MainWindow.FindElement(WiniumBy.AutomationId("SetTextButton")).Click();
 
-            Assert.AreEqual("CARAMBA", this.MainWindow.FindElement(By.Id("TextBox1")).Text);
+            Assert.AreEqual("CARAMBA", this.MainWindow.FindElement(WiniumBy.AutomationId("TextBox1")).Text);
         }
 
         #endregion

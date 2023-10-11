@@ -294,6 +294,11 @@ namespace Winium.StoreApps.Common
         public static readonly string MouseDoubleClick = "mouseDoubleClick";
 
         /// <summary>
+        /// Represents the MouseContextClick command.
+        /// </summary>
+        public static readonly string MouseContextClick = "mouseContextClick";
+
+        /// <summary>
         /// Represents the MouseDown command.
         /// 
         /// </summary>

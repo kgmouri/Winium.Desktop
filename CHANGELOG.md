@@ -5,7 +5,12 @@
 - Add driver option --silent to disable logging
 -->
 
-## v1.6.0
+
+## v2.0.0
+- updated selenium dependency to version 4.11.0
+
+
+## v1.6.0
 
 - Add new script command for click to element center (by bounding rectangle). Thanks @kdavydenko
 - Add `GetOrientation` and `SetOrientation` command. Thanks @jonstoneman

@@ -6,14 +6,15 @@
 
     using OpenQA.Selenium;
     using OpenQA.Selenium.Remote;
+    using OpenQA.Selenium.Winium;
 
     #endregion
 
-    public class BaseForMainWindowTest : BaseTest<RemoteWebDriver>
+    public class BaseForMainWindowTest : BaseTest<WiniumDriver>
     {
         #region Public Properties
 
-        public IWebElement MainWindow { get; set; }
+        public WiniumElement MainWindow { get; set; }
 
         #endregion
 
@@ -22,7 +23,7 @@
         [SetUp]
         public void FindMainWindow()
         {
-            this.MainWindow = this.Driver.FindElement(By.XPath("/*[@AutomationId='WpfTestApplicationMainWindow']"));
+            this.MainWindow = this.Driver.FindElement(WiniumBy.XPath("/*[@AutomationId='WpfTestApplicationMainWindow']"));
         }
 
         #endregion

@@ -5,10 +5,11 @@
     using NUnit.Framework;
 
     using OpenQA.Selenium;
+    using OpenQA.Selenium.Winium;
 
     #endregion
 
-    [Ignore]
+    [Ignore("")]
     public class MenuCommandsTests : BaseTest<TestWebDriver>
     {
         #region Public Properties
@@ -43,8 +44,8 @@
         [SetUp]
         public new void SetUp()
         {
-            var mainWindow = this.Driver.FindElement(By.XPath("/*[@AutomationId='WpfTestApplicationMainWindow']"));
-            this.MenuElement = mainWindow.FindElement(By.Id("SimpleMenu"));
+            var mainWindow = this.Driver.FindElement(WiniumBy.XPath("/*[@AutomationId='WpfTestApplicationMainWindow']"));
+            this.MenuElement = mainWindow.FindElement(WiniumBy.AutomationId("SimpleMenu"));
         }
 
         #endregion

@@ -6,6 +6,7 @@
 
     using NLog;
     using NLog.Targets;
+    using OpenQA.Selenium.DevTools;
 
     #endregion
 
@@ -49,7 +50,7 @@
         {
             var target = new ConsoleTarget { Layout = LayoutFormat };
 
-            NLog.Config.SimpleConfigurator.ConfigureForTargetLogging(target, verbose ? LogLevel.Debug : LogLevel.Fatal);
+            LogManager.Setup().LoadConfiguration(c => c.ForLogger(verbose ? LogLevel.Debug : LogLevel.Fatal).WriteTo(target));
             LogManager.ReconfigExistingLoggers();
         }
 
@@ -57,13 +58,13 @@
         {
             var target = new FileTarget { Layout = LayoutFormat, FileName = fileName };
 
-            NLog.Config.SimpleConfigurator.ConfigureForTargetLogging(target, verbose ? LogLevel.Debug : LogLevel.Info);
+            LogManager.Setup().LoadConfiguration(c => c.ForLogger(verbose ? LogLevel.Debug : LogLevel.Fatal).WriteTo(target));
             LogManager.ReconfigExistingLoggers();
         }
 
         public static void TargetNull()
         {
-            NLog.Config.SimpleConfigurator.ConfigureForTargetLogging(new NullTarget());
+            LogManager.Setup().LoadConfiguration(c => c.ForLogger().WriteTo(new NullTarget()));
             LogManager.ReconfigExistingLoggers();
         }
 

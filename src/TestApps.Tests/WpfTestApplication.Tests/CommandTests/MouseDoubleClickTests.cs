@@ -5,10 +5,11 @@
     using NUnit.Framework;
 
     using OpenQA.Selenium.Remote;
+    using OpenQA.Selenium.Winium;
 
     #endregion
 
-    public class MouseDoubleClickTests : BaseTest<RemoteWebDriver>
+    public class MouseDoubleClickTests : BaseTest<WiniumDriver>
     {
         #region Public Methods and Operators
 

@@ -6,10 +6,11 @@
 
     using OpenQA.Selenium;
     using OpenQA.Selenium.Remote;
+    using OpenQA.Selenium.Winium;
 
     #endregion
 
-    public class GetElementSizeTests : BaseTest<RemoteWebDriver>
+    public class GetElementSizeTests : BaseTest<WiniumDriver>
     {
         #region Public Methods and Operators
 
@@ -17,8 +18,8 @@
         [TestCase("TextListBox", 200, 100)]
         public void GetSizeOfElement(string elementId, int width, int height)
         {
-            var mainWindowStrategy = By.XPath("/*[@AutomationId='WpfTestApplicationMainWindow']");
-            var element = this.Driver.FindElement(mainWindowStrategy).FindElement(By.Id(elementId));
+            var mainWindowStrategy = WiniumBy.XPath("/*[@AutomationId='WpfTestApplicationMainWindow']");
+            var element = this.Driver.FindElement(mainWindowStrategy).FindElement(WiniumBy.AutomationId(elementId));
 
             var size = element.Size;
 

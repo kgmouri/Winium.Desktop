@@ -6,9 +6,11 @@
 
     using OpenQA.Selenium;
     using OpenQA.Selenium.Interactions;
+    using OpenQA.Selenium.Winium;
 
     #endregion
 
+    [Ignore("Action class cannot be used")]
     public class MouseClickTests : BaseForMainWindowTest
     {
         #region Fields
@@ -36,8 +38,8 @@
         [SetUp]
         public void SetUpForFindElementsAndCreateActionsClass()
         {
-            this.textBox = this.MainWindow.FindElement(By.Id("TextBox1"));
-            this.button = this.MainWindow.FindElement(By.Id("SetTextButton"));
+            this.textBox = this.MainWindow.FindElement(WiniumBy.AutomationId("TextBox1"));
+            this.button = this.MainWindow.FindElement(WiniumBy.AutomationId("SetTextButton"));
 
             this.action = new Actions(this.Driver);
         }

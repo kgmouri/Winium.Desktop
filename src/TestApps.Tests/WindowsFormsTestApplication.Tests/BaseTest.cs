@@ -8,6 +8,7 @@
     using NUnit.Framework;
 
     using OpenQA.Selenium.Remote;
+    using OpenQA.Selenium.Winium;
 
     #endregion
 
@@ -15,7 +16,7 @@
     {
         #region Public Properties
 
-        public RemoteWebDriver Driver { get; set; }
+        public WiniumDriver Driver { get; set; }
 
         #endregion
 
@@ -24,10 +25,10 @@
         [SetUp]
         public void SetUp()
         {
-            var dc = new DesiredCapabilities();
-            dc.SetCapability("app", Path.Combine(Environment.CurrentDirectory, "WindowsFormsTestApplication.exe"));
-            dc.SetCapability("launchDelay", 2);
-            this.Driver = new RemoteWebDriver(new Uri("http://localhost:9999"), dc);
+            var dc = new DesktopOptions();
+            dc.ApplicationPath = Path.Combine(Environment.CurrentDirectory, "WindowsFormsTestApplication.exe");
+            dc.LaunchDelay = 2;
+            this.Driver = new WiniumDriver(new Uri("http://localhost:9999"), dc);
         }
 
         [TearDown]

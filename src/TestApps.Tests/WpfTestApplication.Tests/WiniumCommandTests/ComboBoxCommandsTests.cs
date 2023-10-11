@@ -5,10 +5,11 @@
     using NUnit.Framework;
 
     using OpenQA.Selenium;
+    using OpenQA.Selenium.Winium;
 
     #endregion
 
-    [Ignore]
+    [Ignore("")]
     public class ComboBoxCommandsTests : BaseTest<TestWebDriver>
     {
         #region Public Properties
@@ -26,7 +27,7 @@
 
             this.Driver.CollapseComboBox(this.ComboBoxElement);
 
-            Assert.IsFalse(this.ComboBoxElement.FindElement(By.Name("Month")).Displayed);
+            Assert.IsFalse(this.ComboBoxElement.FindElement(WiniumBy.Name("Month")).Displayed);
         }
 
         [Test]
@@ -34,7 +35,7 @@
         {
             this.Driver.ExpandComboBox(this.ComboBoxElement);
 
-            Assert.IsTrue(this.ComboBoxElement.FindElement(By.Name("Month")).Displayed);
+            Assert.IsTrue(this.ComboBoxElement.FindElement(WiniumBy.Name("Month")).Displayed);
         }
 
         [Test]
@@ -48,7 +49,7 @@
         {
             this.ComboBoxElement.Click();
 
-            var item = this.ComboBoxElement.FindElement(By.Name("Month"));
+            var item = this.ComboBoxElement.FindElement(WiniumBy.Name("Month"));
 
             item.Click();
 
@@ -66,8 +67,8 @@
         [SetUp]
         public new void SetUp()
         {
-            var mainWindow = this.Driver.FindElement(By.XPath("/*[@AutomationId='WpfTestApplicationMainWindow']"));
-            this.ComboBoxElement = mainWindow.FindElement(By.Id("TextComboBox"));
+            var mainWindow = this.Driver.FindElement(WiniumBy.XPath("/*[@AutomationId='WpfTestApplicationMainWindow']"));
+            this.ComboBoxElement = mainWindow.FindElement(WiniumBy.AutomationId("TextComboBox"));
         }
 
         #endregion

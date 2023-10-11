@@ -5,10 +5,11 @@
     using NUnit.Framework;
 
     using OpenQA.Selenium.Remote;
+    using OpenQA.Selenium.Winium;
 
     #endregion
 
-    public class TakeScreenshotTests : BaseTest<RemoteWebDriver>
+    public class TakeScreenshotTests : BaseTest<WiniumDriver>
     {
         #region Public Methods and Operators
 

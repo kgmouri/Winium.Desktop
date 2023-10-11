@@ -7,6 +7,7 @@
     using NUnit.Framework;
 
     using OpenQA.Selenium;
+    using OpenQA.Selenium.Winium;
 
     #endregion
 
@@ -35,9 +36,9 @@
         public void CloseApplicationWithOpenedDialogWindow()
         {
             this.baseForMainWindowTest.FindMainWindow();
-            var tabItem3 = this.baseForMainWindowTest.MainWindow.FindElement(By.Id("TabItem3"));
+            var tabItem3 = this.baseForMainWindowTest.MainWindow.FindElement(WiniumBy.AutomationId("TabItem3"));
             tabItem3.Click();
-            tabItem3.FindElement(By.Id("OpenFileDialogButton")).Click();
+            tabItem3.FindElement(WiniumBy.AutomationId("OpenFileDialogButton")).Click();
 
             this.baseForMainWindowTest.Driver.Quit();
 

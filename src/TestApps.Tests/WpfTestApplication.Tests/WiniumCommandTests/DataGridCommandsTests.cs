@@ -5,10 +5,11 @@
     using NUnit.Framework;
 
     using OpenQA.Selenium;
+    using OpenQA.Selenium.Winium;
 
     #endregion
 
-    [Ignore]
+    [Ignore("")]
     public class DataGridCommandsTests : BaseTest<TestWebDriver>
     {
         #region Public Properties
@@ -85,11 +86,11 @@
         [SetUp]
         public new void SetUp()
         {
-            var mainWindow = this.Driver.FindElement(By.XPath("/*[@AutomationId='WpfTestApplicationMainWindow']"));
-            var tab = mainWindow.FindElement(By.Name("TabItem4"));
+            var mainWindow = this.Driver.FindElement(WiniumBy.XPath("/*[@AutomationId='WpfTestApplicationMainWindow']"));
+            var tab = mainWindow.FindElement(WiniumBy.Name("TabItem4"));
             tab.Click();
 
-            this.DataGridElement = tab.FindElement(By.Id("DataGrid"));
+            this.DataGridElement = tab.FindElement(WiniumBy.AutomationId("DataGrid"));
         }
 
         #endregion

@@ -5,6 +5,7 @@
     using NUnit.Framework;
 
     using OpenQA.Selenium;
+    using OpenQA.Selenium.Winium;
 
     #endregion
 
@@ -17,7 +18,7 @@
         {
             get
             {
-                var mainWindowStrategy = By.XPath("/*[@AutomationId='Form1']");
+                var mainWindowStrategy = WiniumBy.XPath("/*[@AutomationId='Form1']");
                 return this.Driver.FindElement(mainWindowStrategy);
             }
         }
@@ -29,43 +30,43 @@
         [Test]
         public void FindChildElementById()
         {
-            var child = this.MainWindow.FindElement(By.Id("TextBox1"));
+            var child = Driver.FindElement(WiniumBy.AutomationId("TextBox1"));
             Assert.NotNull(child);
         }
 
         [Test]
         public void FindChildElementByName()
         {
-            var child = this.MainWindow.FindElement(By.Name("TextBox1"));
+            var child = Driver.FindElement(WiniumBy.Name("TextBox1"));
             Assert.NotNull(child);
         }
 
         [Test]
         public void FindElementById()
         {
-            var element = this.Driver.FindElement(By.Id("TextBox1"));
+            var element = Driver.FindElement(WiniumBy.AutomationId("TextBox1"));
             Assert.NotNull(element);
         }
 
         [Test]
         public void FindElementByName()
         {
-            var element = this.Driver.FindElement(By.Name("TextBox1"));
+            var element = Driver.FindElement(WiniumBy.Name("TextBox1"));
             Assert.NotNull(element);
         }
 
         [Test]
         public void FindElements()
         {
-            var comboBox = this.MainWindow.FindElement(By.Id("TextComboBox"));
-            var elements = comboBox.FindElements(By.Id(string.Empty));
+            var comboBox = this.MainWindow.FindElement(WiniumBy.AutomationId("TextComboBox"));
+            var elements = comboBox.FindElements(WiniumBy.AutomationId(""));
             Assert.AreEqual(6, elements.Count);
         }
 
         [Test]
         public void FindNoElements()
         {
-            var elements = this.MainWindow.FindElements(By.Id("UnexistId"));
+            var elements = Driver.FindElements(WiniumBy.AutomationId("UnexistId"));
             Assert.AreEqual(0, elements.Count);
         }
 

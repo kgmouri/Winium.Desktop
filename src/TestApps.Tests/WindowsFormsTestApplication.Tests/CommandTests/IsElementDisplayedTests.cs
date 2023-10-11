@@ -8,6 +8,7 @@
 
     #endregion
 
+    using OpenQA.Selenium.Winium;
     public class IsElementDisplayedTests : BaseForMainWindowTest
     {
         #region Public Methods and Operators
@@ -15,7 +16,7 @@
         [Test]
         public void IsDisplaydVisibleElement()
         {
-            var element = this.MainWindow.FindElement(By.Id("TextBox1"));
+            var element = this.MainWindow.FindElement(WiniumBy.AutomationId("TextBox1"));
 
             Assert.IsTrue(element.Displayed);
         }

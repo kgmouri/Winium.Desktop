@@ -5,6 +5,7 @@
     using NUnit.Framework;
 
     using OpenQA.Selenium;
+    using OpenQA.Selenium.Winium;
 
     #endregion
 
@@ -16,19 +17,19 @@
         [Test]
         public void ClickButtonWhichSetsText()
         {
-            this.MainWindow.FindElement(By.Id("SetTextButton")).Click();
+            this.MainWindow.FindElement(WiniumBy.AutomationId("SetTextButton")).Click();
 
-            Assert.AreEqual("CARAMBA", this.MainWindow.FindElement(By.Id("TextBox1")).Text);
+            Assert.AreEqual("CARAMBA", this.MainWindow.FindElement(WiniumBy.AutomationId("TextBox1")).Text);
         }
 
         [Test]
         public void ClickByTwoElementsWithPressedControl()
         {
-            var list = this.MainWindow.FindElement(By.Id("TextListBox"));
+            var list = this.MainWindow.FindElement(WiniumBy.AutomationId("TextListBox"));
 
-            var listItem1 = list.FindElement(By.Name("March"));
-            var listItem2 = list.FindElement(By.Name("January"));
-            var listItem3 = list.FindElement(By.Name("February"));
+            var listItem1 = list.FindElement(WiniumBy.Name("March"));
+            var listItem2 = list.FindElement(WiniumBy.Name("January"));
+            var listItem3 = list.FindElement(WiniumBy.Name("February"));
 
             this.Driver.ExecuteScript("input: ctrl_click", listItem1);
             this.Driver.ExecuteScript("input: ctrl_click", listItem2);
@@ -41,9 +42,9 @@
         [Test]
         public void ClickByElementBoundingRecatngleCenter()
         {
-            var list = this.MainWindow.FindElement(By.Id("TextListBox"));
+            var list = this.MainWindow.FindElement(WiniumBy.AutomationId("TextListBox"));
 
-            var listItem1 = list.FindElement(By.Name("March"));
+            var listItem1 = list.FindElement(WiniumBy.Name("March"));
 
             this.Driver.ExecuteScript("input: brc_click", listItem1);
 
