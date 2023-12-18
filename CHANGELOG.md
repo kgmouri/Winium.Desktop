@@ -5,6 +5,8 @@
 - Add driver option --silent to disable logging
 -->
 
+## v2.1.0
+- updated selenium dependency to version 4.16.2
 
 ## v2.0.0
 - updated selenium dependency to version 4.11.0

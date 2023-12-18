@@ -138,7 +138,7 @@
       <Version>5.2.4</Version>
     </PackageReference>
     <PackageReference Include="Selenium.WebDriver">
-      <Version>4.11.0</Version>
+      <Version>4.16.2</Version>
     </PackageReference>
     <PackageReference Include="Winium.Cruciatus">
       <Version>2.10.0</Version>
